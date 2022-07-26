@@ -1,0 +1,96 @@
+USE FORSTEPFIVE;
+/*Address Creation*/
+-- 3 are needed because there is 3 columns that rely on it.
+INSERT INTO Address
+VALUES (1, '2nd Street', 111, 'Vancouver', 'BC');
+INSERT INTO Address
+VALUES (2, '2nd Street', 112, 'Toronto', 'ON');
+
+INSERT INTO Address
+VALUES (3, 'Main Street', 233, 'Calgary', 'AB'),
+    /*FOR PROPERTY*/
+       (4, 'Main Street', 234, 'Vancouver', 'BC'),
+       (5, 'Main Street', 235, 'Vancouver', 'BC'),
+       (6, 'Main Street', 236, 'Vancouver', 'BC');
+/*Consumer Creation*/
+--  3 ARE NEEDED (BUYER, SELLER, DEPENDENTHASINFO)
+INSERT INTO consumer
+-- RENTER
+VALUES (1, 'William', 'Brown', 'Finance', 2),
+       (5, 'Jay', 'Jacobs', NULL, NULL);
+
+INSERT INTO consumer
+-- BUYER
+VALUES (2, 'Edward', 'Snowden', 'IT', NULL);
+
+INSERT INTO consumer
+-- SELLER
+VALUES (4, 'Donald', 'Trump', 'Real Estate', NULL);
+
+/*RENTER*/
+--  2 VALUES NEEDED
+INSERT INTO renter
+VALUES (1, '2006-11-30', '2025-11-30'),
+       (5, '2022-01-02', '2023-01-02');
+
+/*DEPENDENT INFO*/
+INSERT INTO dependent_hasinfo
+VALUES ('1', 'Justin Brown', 'Male', '2001-07-06');
+
+
+/*RENTER DEPENDENT*/
+INSERT INTO renter_has_dependent
+VALUES (1, 1, 'Son');
+
+/*Buyer*/
+INSERT INTO buyer
+VALUES (2);
+
+
+/*Seller*/
+INSERT INTO seller
+VALUES (4);
+
+/*Property*/
+-- ADDRESS ID'S 4,5,6
+INSERT INTO property
+VALUES (1, 4, '2022-05-04', '1000000', 'Literally just a closet'),
+       (2, 5, '2022-01-04', '10', NULL),
+       (3, 6, '2021-01-04', '99', NULL);
+/*property type*/
+INSERT INTO property_has_propertytype
+VALUES ('Condo', '1', 300);
+/*property photo*/
+INSERT INTO property_photo
+VALUES (2, 'C://Property.png');
+/*PURCHASE CONTRACT*/
+INSERT INTO purchasecontract
+VALUES (1),
+       (2),
+       (3),
+       (4);
+/*carry on from below purchase contract and to the left.*/
+
+/*Buyer has purchase contract*/
+INSERT INTO buyer_has_purchasecontract
+VALUES (1, 2, 10000, '2022-07-03');
+
+/*Seller has Purchase Contract */
+INSERT INTO seller_has_purchasecontract
+VALUES (1, 4, '2022-07-03');
+/*PURCHASE CONTRACT HAS MORTGAGE*/
+INSERT INTO purchasecontract_has_mortgage
+VALUES (1, 1000);
+/*REALTOR*/
+INSERT INTO realtor
+VALUES (1, 5555555555, 'a@a.com', 'Alan', 'Smith'),
+       (2, 5555556666, 'b@b.com', 'Elon', 'Musk');
+/*REALTOR PURCHASE CONTRACT*/
+INSERT INTO realtor_lists_purchasecontract
+VALUES (1,1);
+/*REALTY COMPANY*/
+INSERT INTO realtycompany
+VALUES('Bobs Overpriced Homes', 5555557777,6);
+/*REALTOR WORKS FOR REALTY COMPANY*/
+INSERT INTO realtor_works_for_realtycompany
+VALUES ('Bobs Overpriced Homes',1,7);
